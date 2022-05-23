@@ -1,0 +1,284 @@
+
+<html>
+<head>
+	<title>Hot Pizza.</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Fresh cheese pizza and more ;)">
+	<meta property="og:title" content="Hot Pizza.">
+	<meta property="og:description" content="Fresh cheese pizza and more ;)">
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+			font-family: monospace;
+		}
+		
+		#wcontainer {
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			position: absolute;
+			z-index: 10;
+		}
+		
+		#warning {
+			width: 400px;
+			height: fit-content;
+			border: 4px double red;
+			position:absolute;
+			left:0; right:0;
+			top:0; bottom:0;
+			margin:auto;
+			max-width:100%;
+			max-height:100%;
+			overflow:auto;
+			padding: 10px;
+			text-align: center;
+		}
+		
+		.redcaption {
+			color: white;
+			border-bottom: 1px dashed red;
+			padding: 10px;
+			font-size: 40px;
+		}
+		
+		.text {
+			color: white;
+			font-size: 15px;
+			font-weight: bold;
+			padding: 20px;
+		}
+		
+		.link {
+			text-decoration: none;
+			color: red;
+		}
+		
+		.button {
+			border: 1px solid red;
+			padding: 3px;
+			border-radius: 3px;
+			color: red;
+			font-weight: bold;
+			font-size: 20px;
+		}
+		
+		@keyframes flickerbg {
+			50% { background-image: url(img/bestapizza2.png); }
+			100% { background-image: url(img/bestapizza.png); }
+		}
+		#container {
+			width: 100%;
+			height: 100%;
+			background-image: url(img/bestapizza.png);
+			background-size: auto;
+			background-repeat: repeat;
+			animation: flickerbg 0.15s infinite;
+			display: none;
+			z-index: 0;
+			position: fixed;
+		}
+		
+		#header {
+			width: 100%;
+			height: 25px;
+			background-color: black;
+			text-align: center;
+		}
+		
+		#header a {
+			color: red;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		
+		#textholder {
+		   position: absolute;
+			width: fit-content;
+			left: 50%;
+			top: 30%;
+			font-size: 120pt;
+			z-index: 4;
+		}
+		
+		#bustedtext {
+			position: relative;
+			left: -50%;
+			text-align: center;
+		}
+		
+		.imgholder {
+			width: 300px;
+			height: 300px;
+			background-image: url(img/crime.jpg);
+			background-size: cover;
+			display: inline-block;
+		}
+		
+		.imgholder.left { float: left; }
+		.imgholder.right { float: right; }
+		
+		@keyframes skew {
+			from { transform: skew(0deg,0deg); }
+			to { transform: skew(180deg,0deg); }
+		}
+		
+		@keyframes skew2 {
+			from { transform: skew(0deg,0deg); }
+			to { transform: skew(-180deg,0deg); }
+		}
+		
+		.fbi{
+			background-image: url(img/fbi.png);
+			width: 944px;
+			height: 236px;
+			z-index: 0;
+		}
+		.fbi.left {
+			float: left;
+			animation: skew 2s infinite linear;
+		}
+		.fbi.right {
+			float: right;
+			animation: skew2 2s infinite linear;
+		}
+		
+		@keyframes rotation {
+		  0% {
+			transform: rotate3d(0, 1, 0, 0deg);
+		  }
+		  50% {
+			transform: rotate3d(0, 1, 0, 180deg);
+		  }
+		  100% {
+			transform: rotate3d(0, 1, 0, 360deg);
+		  }
+		}
+		
+		#spincontainer {
+		    position: absolute;
+			bottom: 0px;
+			height: 300px;
+			width: 100%;
+			text-align: center;
+		}
+
+		.coin {
+		  position: relative;
+		  top: 25px;
+		  left: 25px;
+		  width: 300px;
+		  height: 300px;
+		  text-align: center;
+		  line-height: 50px;
+		  animation-name: rotation;
+		  animation-iteration-count: infinite;
+		  animation-timing-function: linear;
+		  animation-duration: 2.5s;
+		  transform: rotateY(0deg);
+		  transform-style: preserve-3d;
+		  display: inline-block;
+		  margin: 0px 20px;
+		}
+		.face {
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  width: 100%;
+		  height: 100%;
+		  border-radius: 50%;
+		  backface-visibility: hidden;
+		  background-image: url(img/fbi.svg);
+		  background-size: cover;
+		}
+		.heads {
+		  z-index: 2;
+		  transform: rotateY(0deg);
+		}
+		.tails {
+		  z-index: 1;
+		  transform: rotateY(180deg);
+		}
+		
+	</style>
+	<script>
+		window.addEventListener("load", function() {
+		
+			document.getElementById("enter").addEventListener("click", init);
+			
+			function init() {
+				document.getElementById("audio").play();
+				document.getElementById("wcontainer").style.display = "none";
+				document.getElementById("container").style.display = "block";
+				textWriter("stop right there, criminal scum!");
+			}
+			
+			function textWriter(text) {
+				let txt = "";
+				for(let i = 0; i < text.length; i++) {
+					let current = txt + text[i];
+					txt += text[i];
+					setTimeout(function() {
+						document.getElementById("bustedtext").innerHTML = current + "❘";
+					}, 130 * (i+1));
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+
+	<div id="wcontainer">
+		<div id="warning">
+			<div class="redcaption">Warning</div>
+			<div class="text">
+				This site contains sexually explicit materials.
+				By pressing the 'Enter'-button you agree to our <a href="tos.html" class="link" target="_blank">Terms of Service</a>
+			</div>
+			<div id="buttons">
+				<a href="#" id="enter" class="button">Enter</a>
+			</div>
+		</div>
+	</div>
+	<div id="container">
+		<div id="header"><a href="https://discord.gg/jZQZcKqSzd" target="_blank">https://discord.gg/jZQZcKqSzd</a></div>
+		<div id="textholder">
+			<div id="bustedtext">❘</div>
+		</div>
+		<div class="fbi left"></div>
+		<div class="fbi right"></div>
+		
+		<div id="spincontainer">
+			<div class="imgholder left"></div>
+			<div class="coin">
+				<div class="face heads">
+				</div>
+				<div class="face tails">
+				</div>
+			</div>
+			<div class="coin">
+				<div class="face heads">
+				</div>
+				<div class="face tails">
+				</div>
+			</div>
+			<div class="coin">
+				<div class="face heads">
+				</div>
+				<div class="face tails">
+				</div>
+			</div>
+			<div class="coin">
+				<div class="face heads">
+				</div>
+				<div class="face tails">
+				</div>
+			</div>
+			<div class="imgholder right"></div>
+		</div>
+	</div>
+	<audio src="breakinsad2.mp3" id="audio"></audio>
+
+</body>
+</html>
