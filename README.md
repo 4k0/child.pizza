@@ -1,1 +1,1 @@
-# child.pizza website src, u can use it for github.io or smth idc.
+# child.pizza src for github.io websites
